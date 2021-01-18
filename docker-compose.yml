@@ -1,0 +1,17 @@
+version: "3"
+services:
+  signal-cli-rest-api:
+    image: bbernhard/signal-cli-rest-api:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./signal-cli-config:/home/.local/share/signal-cli" # contains password and cryptographic keys when a new number is registered
+  chatbridge:
+    build: .
+    #ports:
+      #- "80:80/tcp"
+      #- "80:80/udp"
+      #- "443:443/tcp"
+      #- "443:443/udp"
+    volumes:
+      - "./chatbridge-cache:/home/.local/share/chatbridge" # cache holds messages until they were processed
