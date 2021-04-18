@@ -3,24 +3,24 @@
 # https://discordpy.readthedocs.io/en/latest/
 # https://github.com/bbernhard/signal-cli-rest-api
 
+import logging
 import argparse
-import discord
 
+from discordbot import *
+
+logLevel = logging.DEBUG
 cacheFolderPath = './chatbridge-cache'
 
-client = discord.Client()
+logger = logging.getLogger('chatbridge')
+logger.setLevel(logLevel)
 
-@client.event
-async def on_ready():
-    print('Login successful as user {0.user}'.format(client))
+logFileHandle = logging.FileHandler('chatbridge.log')
+logFileHandle.setLevel(logLevel)
+logger.addHandler(logFileHandle)
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
-    if message.content.startswith('Hello'):
-        await message.channel.send('World!')
+logConsoleHandler = logging.StreamHandler()
+logConsoleHandler.setLevel(logLevel)
+logger.addHandler(logConsoleHandler)
 
 def main():
     argParser = argparse.ArgumentParser()
@@ -31,7 +31,9 @@ def main():
     if args.discordtoken:
         discordBotToken = args.discordtoken
     
-    client.run(discordBotToken)
+    discordBot = DiscordBot()
+    discordBot.run(discordBotToken)
+    
 
 if __name__ == "__main__":
     main()
