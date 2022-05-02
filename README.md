@@ -10,8 +10,8 @@ Bridge for connecting chat groups across platforms
 ```console
 git clone https://github.com/jrichter42/chatbridge.git
 cd chatbridge
-docker-compose build
-docker-compose up -d
+docker compose up -d
+docker compose build
 ```
 ### Other
 You will need to host:

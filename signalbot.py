@@ -20,7 +20,7 @@ class SignalBot:
         pass
 
     def sendRequest(self):
-        "curl -X POST -H "Content-Type: application/json" --data '{"use_voice": true}' 'http://127.0.0.1:8080/v1/register/<number>'"
+        pass#"curl -X POST -H "Content-Type: application/json" --data '{"use_voice": true}' 'http://127.0.0.1:8080/v1/register/<number>'"
 
 
     """

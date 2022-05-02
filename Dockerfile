@@ -1,6 +1,8 @@
 FROM python:3.8
+# https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/
+#FROM hypriot/rpi-python:latest
 WORKDIR /app
-COPY docker_requirements.txt requirements.txt
+COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 #EXPOSE 80/tcp
 #EXPOSE 80/udp

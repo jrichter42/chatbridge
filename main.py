@@ -30,6 +30,9 @@ def main():
     discordBotToken = ''
     if args.discordtoken:
         discordBotToken = args.discordtoken
+    else:
+        with open('secrets/discordtoken') as token_file:
+            discordBotToken = token_file.read()
     
     discordBot = DiscordBot()
     discordBot.run(discordBotToken)
